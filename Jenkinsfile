@@ -17,7 +17,8 @@ pipeline {
 			}
 		}
 
-	} post {
+	} 
+	post {
 		always {
 			echo " i am runnin galways"
 		}
