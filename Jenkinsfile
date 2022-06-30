@@ -5,8 +5,12 @@ pipeline {
 	stages {
 		stage('build') {
 			steps {
-				bash 'node --version'
 				echo "build"
+				echo "path - $PATH"
+				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
+				echo "job name  - $env.JOB_NAME"
+				echo "BUILD tag - $env.BUILD_TAG"
+				echo "build url - $env.BUILD_URL"
 			}
 		}
 		stage('Test') {
