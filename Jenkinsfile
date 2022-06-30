@@ -17,5 +17,15 @@ pipeline {
 			}
 		}
 
+	} post {
+		always {
+			echo " i am runnin galways"
+		}
+		success {
+			echo " i am running when buils success"
+		}
+		failure {
+			echo " i run when build failed"
+		}
 	}
 }
