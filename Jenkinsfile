@@ -10,8 +10,8 @@ pipeline {
 	stages {
 		stage('build') {
 			steps {
-				bash 'docker verion'
-				bash 'mvn --version'
+				docker verion
+				mvn --version
 				echo "build"
 				echo "path - $PATH"
 				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
