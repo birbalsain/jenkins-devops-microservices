@@ -10,13 +10,30 @@ pipeline {
 	stages {
 		stage('Checkout') {
 			steps {
-				bash 'docker version'
 				echo "build"
 				echo "path - $PATH"
 				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
 				echo "job name  - $env.JOB_NAME"
 				echo "BUILD tag - $env.BUILD_TAG"
 				echo "build url - $env.BUILD_URL"
+			}
+		}
+		stage ('build docker image') {
+			steps {
+				script {
+					dockerImage = docker.build("in28min/currency-exchange-devops:${env.BUILD_TAG}")
+				}
+				//docker build -t in28min/currency-exchange-dev ops
+			}
+		}
+		stage (' push docker image') {
+			steps {
+				script {
+					docker.withRegistory('','dockerhub'){
+						dockerImage.push();
+					    dockerImage.push('latest');
+					}					
+				}
 			}
 		}
 		stage('Test') {
