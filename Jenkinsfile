@@ -18,6 +18,11 @@ pipeline {
 				echo "build url - $env.BUILD_URL"
 			}
 		}
+		stage(packages) {
+			steps {
+				sh "mvn package -DskipTests"
+			}
+		}
 		stage ('build docker image') {
 			steps {
 				script {
