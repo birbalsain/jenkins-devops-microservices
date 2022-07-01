@@ -8,8 +8,9 @@ pipeline {
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
 	}
 	stages {
-		stage('build') {
+		stage('Checkout') {
 			steps {
+				bash 'docker version'
 				echo "build"
 				echo "path - $PATH"
 				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
